@@ -1,23 +1,23 @@
-function tabs() {
+const tabs = () => {
     let tab = document.querySelectorAll('.info-header-tab'),
         info = document.querySelector('.info-header'),
         tabContent = document.querySelectorAll('.info-tabcontent');
 
-function hideTabContent(a) {
+const hideTabContent = (a) => {
     for(let i = a; i < tabContent.length; i++) {
         tabContent[i].classList.remove('show');
         tabContent[i].classList.add('hide');
     }
-}
+};
 
 hideTabContent(1);
 
-function showTabContent(b) {
+const showTabContent = (b) => {
     if (tabContent[b].classList.contains('hide')) {
         tabContent[b].classList.remove('hide');
         tabContent[b].classList.add('show');
     }
-}
+};
 
 info.addEventListener('click', (e) => {
     let target = e.target;
@@ -31,6 +31,6 @@ info.addEventListener('click', (e) => {
         }
     }
 });
-}
+};
 
 module.exports = tabs;

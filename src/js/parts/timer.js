@@ -1,7 +1,7 @@
-function timer() {
+const timer = () => {
     let deadline = '2019-05-30';
 
-function getTimeRemaining(endtime) {
+const getTimeRemaining = (endtime) => {
     let t = Date.parse(endtime) - Date.parse(new Date()),
         seconds = Math.floor((t / 1000) % 60),
         minutes = Math.floor((t / 1000 / 60) % 60),
@@ -13,19 +13,20 @@ function getTimeRemaining(endtime) {
             'minutes' : minutes,
             'seconds' : seconds
         };
-    }
+    };
 
-function setClock(id, endtime) {
+const setClock = (id, endtime) => {
     let timer = document.getElementById(id),
         hours = timer.querySelector('.hours'),
         minutes = timer.querySelector('.minutes'),
         seconds = timer.querySelector('.seconds'),
         timeInterval = setInterval(updateClock, 1000);
+        
     function updateClock() {
         let t = getTimeRemaining(endtime);
-        hours.textContent = zero(t.hours) ;
-        minutes.textContent = zero(t.minutes);
-        seconds.textContent = zero(t.seconds);
+            hours.textContent = zero(t.hours) ;
+            minutes.textContent = zero(t.minutes);
+            seconds.textContent = zero(t.seconds);
 
         if (t.total <= 0) {
             clearInterval(timeInterval);
@@ -34,7 +35,7 @@ function setClock(id, endtime) {
             seconds.textContent = '00';
             }
         }
-    }
+    };
 
     function zero(a) {
         if (a < 10) {
@@ -44,6 +45,6 @@ function setClock(id, endtime) {
         }
         
     setClock('timer', deadline);
-}
+};
 
 module.exports = timer;
