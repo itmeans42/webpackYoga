@@ -223,25 +223,25 @@ module.exports = form;
 /***/ (function(module, exports) {
 
 const modal = () => {
-    let overlay = document.querySelector('.overlay');
+    let overlay = document.querySelector('.overlay'),
+        isActiveBtn;
 
-const attachModal = (overlayStatus, classListMethod) => {
-    if (classListMethod == 'remove') {
-        document.querySelector('.main-form').style.display = '';
-
-    }
+const attachModal = (overlayStatus, overflowStatus, classListMethod, el) => {
+    if (classListMethod == 'add') isActiveBtn = el;
+    if (!el) el = isActiveBtn;
     overlay.style.display = overlayStatus;
+    el.classList[classListMethod]('more-splash');
+    document.body.style.overflow = overflowStatus;
+    
 };
 
 document.body.addEventListener('click', event => {
     let target = event.target;
 
-    if (target.classList.contains('more') || target.classList.contains('description-btn')) {
-        attachModal('block', 'hidden', 'add');
-    }
-    if (target.classList.contains('popup-close')) {
-        attachModal('', '', 'remove');
-    }
+    if (target.classList.contains('more') || target.classList.contains('description-btn')) 
+    attachModal('block', 'hidden', 'add', target);
+    if (target.classList.contains('popup-close')) 
+    attachModal('none', '', 'remove');
 });
 
 };
