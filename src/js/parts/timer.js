@@ -37,7 +37,7 @@ const setClock = (id, endtime) => {
         }
     };
 
-    function zero(a) {
+    const zero = (a) => {
         if (a < 10) {
             a = '0' + a;
             }
