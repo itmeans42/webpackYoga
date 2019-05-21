@@ -16,7 +16,7 @@ document.body.addEventListener('click', event => {
         attachModal('block', 'hidden', 'add');
     }
     if (target.classList.contains('popup-close')) {
-        attachModal('remove');
+        attachModal('', '', 'remove');
     }
 });
 
