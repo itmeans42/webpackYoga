@@ -1,27 +1,27 @@
 const modal = () => {
-    let more = document.querySelector('.more'),
-        descr = document.querySelector('.description-btn'),
-        overlay = document.querySelector('.overlay'),
-        close = document.querySelector('.popup-close');
+    let overlay = document.querySelector('.overlay');
 
-    more.addEventListener('click', function() {
-        overlay.style.display = 'block';
-        this.classList.add('more-splash');
-        document.body.style.overflow = 'hidden';
-    });
+const attachModal = (overlayStatus, classListMethod) => {
+    if (classListMethod == 'remove') {
+        document.querySelector('.main-form').style.display = '';
+        if (document.querySelector('.status-message')) {
+        document.querySelector('.status-message').innerHTML = '';
+        }
+    }
+    overlay.style.display = overlayStatus;
+};
 
-    descr.addEventListener('click', function() {
-        overlay.style.display = 'block';
-        this.classList.add('more-splash');
-        document.body.style.overflow = 'hidden';
-    });
+document.body.addEventListener('click', event => {
+    let target = event.target;
 
-    close.addEventListener('click', () => {
-        overlay.style.display = 'none';
-        more.classList.remove('more-splash');
-        document.body.style.overflow = '';
-
+    if (target.classList.contains('more') || target.classList.contains('description-btn')) {
+        attachModal('block', 'hidden', 'add');
+    }
+    if (target.classList.contains('popup-close')) {
+        attachModal('', '', 'remove');
+    }
 });
+
 };
 
 module.exports = modal;
